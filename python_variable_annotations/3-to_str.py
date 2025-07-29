@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-"""Module to compute floor of a float."""
-
-import math
+"""Module to convert float to string."""
 
 
-def floor(n: float) -> int:
-    """Return the floor of float n as an integer."""
-    return math.floor(n)
+def to_str(n: float) -> str:
+    """Return the string representation of float n."""
+    return str(n)
