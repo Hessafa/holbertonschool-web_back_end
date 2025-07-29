@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
-"""Measure runtime of async wait_n execution."""
+"""Create an asyncio task for wait_random."""
 
-import time
 import asyncio
-wait_n = __import__('1-concurrent_coroutines').wait_n
+wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-def measure_time(n: int, max_delay: int) -> float:
-    """Measure total execution time of wait_n and return avg time."""
-    start = time.time()
-    asyncio.run(wait_n(n, max_delay))
-    end = time.time()
-    return (end - start) / n
+def task_wait_random(max_delay: int) -> asyncio.Task:
+    """Return asyncio.Task that wraps wait_random coroutine."""
+    return asyncio.create_task(wait_random(max_delay))
