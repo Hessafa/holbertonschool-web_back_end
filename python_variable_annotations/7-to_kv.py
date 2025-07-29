@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Module to sum a mixed list of ints and floats."""
+"""Module to return a tuple of string and square of a number."""
 
-from typing import List, Union
+from typing import Union, Tuple
 
 
-def sum_mixed_list(mxd_lst: List[Union[int, float]]) -> float:
-    """Return the sum of a mixed list of ints and floats as a float."""
-    return sum(mxd_lst)
+def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
+    """Return tuple (k, square of v as float)."""
+    return (k, float(v ** 2))
