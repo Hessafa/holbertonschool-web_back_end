@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Module for async comprehension over async generator."""
-
+''' Async Comprehension '''
 from typing import List
+Vector = List[float]
+
 async_generator = __import__('0-async_generator').async_generator
 
 
-async def async_comprehension() -> List[float]:
-    """Collect 10 random floats from async_generator using async comprehension."""
-    return [i async for i in async_generator()]
+async def async_comprehension() -> Vector:
+    ''' Function that return a list '''
+    Final = [y async for y in async_generator()]
+    return Final
