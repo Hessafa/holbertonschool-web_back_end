@@ -1,5 +1,15 @@
-export default class ClassRoom {
-  constructor(maxStudentsSize) {
-    this._maxStudentsSize = maxStudentsSize;
-  }
-}
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    'eslint:recommended',
+  ],
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  rules: {
+  },
+};
