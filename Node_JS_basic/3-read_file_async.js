@@ -7,24 +7,42 @@ function countStudents(path) {
         reject(Error('Cannot load the database'));
         return;
       }
+      const response = [];
+      let msg;
 
-      const lines = data.split('\n').filter(line => line.trim() !== '');
-      const students = lines.slice(1).map(line => line.split(','));
+      const content = data.toString().split('\n');
 
-      console.log(`Number of students: ${students.length}`);
+      let students = content.filter((item) => item);
+
+      students = students.map((item) => item.split(','));
+
+      const NUMBER_OF_STUDENTS = students.length ? students.length - 1 : 0;
+      msg = `Number of students: ${NUMBER_OF_STUDENTS}`;
+      console.log(msg);
+
+      response.push(msg);
 
       const fields = {};
-      for (const [first, , , field] of students) {
-        if (!fields[field]) fields[field] = [];
-        fields[field].push(first);
+      for (const i in students) {
+        if (i !== 0) {
+          if (!fields[students[i][3]]) fields[students[i][3]] = [];
+
+          fields[students[i][3]].push(students[i][0]);
+        }
       }
 
-      for (const field in fields) {
-        const list = fields[field].join(', ');
-        console.log(`Number of students in ${field}: ${fields[field].length}. List: ${list}`);
-      }
+      delete fields.field;
 
-      resolve();
+      for (const key of Object.keys(fields)) {
+        msg = `Number of students in ${key}: ${
+          fields[key].length
+        }. List: ${fields[key].join(', ')}`;
+
+        console.log(msg);
+
+        response.push(msg);
+      }
+      resolve(response);
     });
   });
 }
